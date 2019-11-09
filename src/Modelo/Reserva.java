@@ -17,36 +17,43 @@ y tiene fechas inicio y fin, días, un monto a pagar, un estado.
  * @author Vanesa
  */
 public class Reserva {
-    private int id;
+    private int id_reserva;
     private Huesped huesped;
     private Habitacion habitacion;
-    private LocalDate checkIn;
-    private LocalDate checkOut;   
+    private double importe;
+    private int cant_Pers;
+    private LocalDate FechaIngreso;
+    private LocalDate FechaEgreso;   
 
     public Reserva() {
     }
 
-    public Reserva(Huesped huesped, Habitacion habitacion, LocalDate checkIn, LocalDate checkOut) {
+    public Reserva(Huesped huesped, Habitacion habitacion, double importe, int cant_Pers, LocalDate fechaIngreso, LocalDate fechaEgreso) {
         this.huesped = huesped;
         this.habitacion = habitacion;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
+        this.importe = importe;
+        this.cant_Pers = cant_Pers; 
+        this.fechaIngreso = fechaIngreso;
+        this.fechaEgreso = fechaEgreso;
     }
 
-    public Reserva(int id, Huesped huesped, Habitacion habitacion, LocalDate checkIn, LocalDate checkOut) {
-        this.id = id;
+    public Reserva(int id_Reserva, Huesped huesped, Habitacion habitacion, double importe, int cant_Pers, LocalDate fechaIngreso, LocalDate fechaEgreso) {
+        this.id_Reserva= id_Reserva;
         this.huesped = huesped;
         this.habitacion = habitacion;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
+        this.importe = importe;
+        this.cant_Pers = cant_Pers; 
+        this.fechaIngreso = fechaIngreso;
+        this.fechaEgreso = fechaEgreso;
+        
     }
 
-    public int getId() {
-        return id;
+    public int getId_Reserva() {
+        return id_Reserva;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_Reserva(int id_Reserva) {
+        this.id_Reserva = id_Reserva;
     }
 
     public Huesped getHuesped() {
@@ -64,24 +71,37 @@ public class Reserva {
     public void setHabitacion(Habitacion habitacion) {
         this.habitacion = habitacion;
     }
-
-    public LocalDate getCheckIn() {
-        return checkIn;
-    }
-
-    public void setCheckIn(LocalDate checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public LocalDate getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(LocalDate checkOut) {
-        this.checkOut = checkOut;
-    }
     
-    
-    
+    public double getImporte() {
+        return importe;
+    }
+
+    public void setImporte(double importe) {
+        this.importe = importe;
+    }
+
+    public int getCant_Pers() {
+        return cant_Pers;
+    }
+
+    public void setCant_Pers(int cant_Pers) {
+        this.cant_Pers = cant_Pers;
+    }
+
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public LocalDate getFechaEgreso() {
+        return fechaEgreso;
+    }
+
+    public void setFechaEgreso(LocalDate fechaEgreso) {
+        this.fechaEgreso = fechaEgreso;
+    }
     
 }
