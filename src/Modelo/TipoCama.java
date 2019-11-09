@@ -11,21 +11,28 @@ package Modelo;
  * @author Vanesa
  */
 public class TipoCama {
+    private int id_TipoCama;
     private TipoHabitacion tipoHabitacion;
-    private String simple;
-    private String queen;
-    private String kingSize;
+    private String tipo;
+    
+     public TipoCama() {
+    }
 
-    public TipoCama(TipoHabitacion tipoHabitacion, String simple, String queen, String kingSize) {
+
+    public TipoCama(int id_TipoCama, TipoHabitacion tipoHabitacion, String tipo) {
+        this.id_TipoCama = id_TipoCama;
         this.tipoHabitacion = tipoHabitacion;
-        this.simple = simple;
-        this.queen = queen;
-        this.kingSize = kingSize;
+        this.tipo = tipo;    
     }
 
-    public TipoCama() {
+    public int getId_TipoCama() {
+        return id_TipoCama;
     }
-
+    
+    public void setId_TipoCama(int id_TipoCama) {
+        this.id_TipoCama = id_TipoCama;
+    }
+    
     public TipoHabitacion getTipoHabitacion() {
         return tipoHabitacion;
     }
@@ -34,29 +41,12 @@ public class TipoCama {
         this.tipoHabitacion = tipoHabitacion;
     }
     
-    public String getSimple() {
-        return simple;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setSimple(String simple) {
-        this.simple = simple;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-
-    public String getQueen() {
-        return queen;
-    }
-
-    public void setQueen(String queen) {
-        this.queen = queen;
-    }
-
-    public String getKingSize() {
-        return kingSize;
-    }
-
-    public void setKingSize(String kingSize) {
-        this.kingSize = kingSize;
-    }
-    
     
 }
