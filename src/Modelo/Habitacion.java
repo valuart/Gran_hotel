@@ -10,49 +10,49 @@ y tienen un estado Ocupada (1) o Libre (0).
  * @author Vanesa
  */
 public class Habitacion {
-   private int id;
+   private int id_habitacion;
+   private int piso;
+   private int numero;
    private String estado;
-   private String tipoCama;
-   private String tipoHabitacion;
-
+   
     public Habitacion() {
     }
 
-    public Habitacion(String estado, String tipoCama, String tipoHabitacion) {
+    public Habitacion(int piso, int numero, String estado) {
+        this.piso = piso;
+        this.numero = numero;
         this.estado = estado;
-        this.tipoCama = tipoCama;
-        this.tipoHabitacion = tipoHabitacion;
     }
 
-    public Habitacion(int id, String estado, String tipoCama, String tipoHabitacion) {
-        this.id = id;
+    public Habitacion(int id_habitacion, int piso, int numero, String estado) {
+        this.id_habitacion = id_habitacion;
+        this.piso = piso;
+        this.numero = numero;
         this.estado = estado;
-        this.tipoCama = tipoCama;
-        this.tipoHabitacion = tipoHabitacion;
     }
 
-    public int getId() {
-        return id;
+    public int getId_habitacion() {
+        return id_habitacion;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_habitacion(int id_habitacion) {
+        this.id_habitacion = id_habitacion;
     }
 
-    public String getTipoCama() {
-        return tipoCama;
+    public int getPiso() {
+        return piso;
     }
 
-    public void setTipoCama(String tipoCama) {
-        this.tipoCama = tipoCama;
+    public void setPiso(int piso) {
+        this.piso = piso;
     }
 
-    public String getTipoHabitacion() {
-        return tipoHabitacion;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setTipoHabitacion(String tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
+    public void setPiso(int numero) {
+        this.numero = numero;
     }
 
     public void setEstado(String estado) {
