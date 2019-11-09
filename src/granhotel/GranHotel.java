@@ -20,7 +20,7 @@ public class GranHotel {
     public static void main(String[] args) {
         Conexion con =new Conexion();
         
-        Huesped h1 =new Huesped("Sebastian Salazar",24356745,"mitre 234","lascosta@gmail",15433243);            
+        Huesped h1 =new Huesped("Sebastian Salazar","mitre 234",24356745,15433243,"lascosta@gmail.com");            
         HuespedData Hd= new HuespedData(con);
         Hd.guardarHuesped(h1);
           
