@@ -10,63 +10,42 @@ package Modelo;
  *
  * @author Vanesa
  */
-public class CategoriaHabitacion {
-    private TipoHabitacion tipoHabitacion;
-    private String simple;
-    private String doble;
-    private String triple;
-    private String lujo;   
+public class Cantidad_Camas {
+    private int id_CantCam;
+    private TipoCama TipoCama;
+    private int cantidad;
 
-    public CategoriaHabitacion() {
+    public Cantidad_Camas() {
     }
 
-    public CategoriaHabitacion(TipoHabitacion tipoHabitacion, String simple, String doble, String triple, String lujo) {
-        this.tipoHabitacion = tipoHabitacion;
-        this.simple = simple;
-        this.doble = doble;
-        this.triple = triple;
-        this.lujo = lujo;
+    public Cantidad-Camas(int id_CantCam, TipoCama tipoCama, int cantidad) {
+        this.id_CantCam = id_CantCam;
+        this.tipoCama = tipoCama;
+        this.cantidad = cantidad;
     }
 
-    public TipoHabitacion getTipoHabitacion() {
-        return tipoHabitacion;
+    public int getId_CantCam() {
+        return id_CantCam;
     }
 
-    public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
+    public void setId_CantCam(int id_CantCam) {
+        this.id_CantCam = id_CantCam;
     }
 
-    public String getSimple() {
-        return simple;
+    public TipoCama getTipoCama() {
+        return tipoCama;
     }
 
-    public void setSimple(String simple) {
-        this.simple = simple;
+    public void setTipoCama(TipoCama tipoCama) {
+        this.tipoCama = tipoCama;
     }
 
-    public String getDoble() {
-        return doble;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setDoble(String doble) {
-        this.doble = doble;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
-
-    public String getTriple() {
-        return triple;
-    }
-
-    public void setTriple(String triple) {
-        this.triple = triple;
-    }
-
-    public String getLujo() {
-        return lujo;
-    }
-
-    public void setLujo(String lujo) {
-        this.lujo = lujo;
-    }
-    
-    
+      
 }
