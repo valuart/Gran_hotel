@@ -11,60 +11,72 @@ package Modelo;
  * @author Vanesa
  */
 public class TipoHabitacion {
-    private int codigo;
-    private int cantidadPersonas;
-    private int cantidadCamas;
-    private int precioHabitacion;
+    private int id_TipoHab;
+    private TipoCama tipoCama;
+    private Habitacion habitacion;
+    private String descripcion;
+    private double precio;
 
     public TipoHabitacion() {
     }
 
-    public TipoHabitacion(int cantidadPersonas, int cantidadCamas, int precioHabitacion) {
-        this.cantidadPersonas = cantidadPersonas;
-        this.cantidadCamas = cantidadCamas;
-        this.precioHabitacion = precioHabitacion;
+    public TipoHabitacion(TipoCama tipoCama, Habitacion habitacion, String descripcion, double precio) {
+        this.tipoCama = tipoCama;
+        this.habitacion = habitacion;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
 
-    public TipoHabitacion(int codigo, int cantidadPersonas, int cantidadCamas, int precioHabitacion) {
-        this.codigo = codigo;
-        this.cantidadPersonas = cantidadPersonas;
-        this.cantidadCamas = cantidadCamas;
-        this.precioHabitacion = precioHabitacion;
+    public TipoHabitacion(int id_TipoHab, TipoCama tipoCama, Habitacion habitacion, String descripcion, double precio) {
+        this.id_TipoHab = id_TipoHab;
+        this.tipoCama = tipoCama;
+        this.habitacion = habitacion;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId_TipoHab() {
+        return id_TipoHab;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId_TipoHab(int id_TipoHab) {
+        this.id_TipoHab = id_TipoHab;
     }
 
-    public int getCantidadPersonas() {
-        return cantidadPersonas;
+    public TipoCama getTipoCama() {
+        return tipoCama;
     }
 
-    public void setCantidadPersonas(int cantidadPersonas) {
-        this.cantidadPersonas = cantidadPersonas;
+    public void setTipoCama(TipoCama tipoCama) {
+        this.tipoCama = tipoCama;
     }
 
-    public int getCantidadCamas() {
-        return cantidadCamas;
+    public Habitacion getHabitacion() {
+        return habitacion;
     }
 
-    public void setCantidadCamas(int cantidadCamas) {
-        this.cantidadCamas = cantidadCamas;
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
     }
     
-    public int getPrecioHabitacion() {
-        return precioHabitacion;
+    public String getDescripcion() {
+        return descripcion;
+    }
+    
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setPrecioHabitacion(int precioHabitacion) {
-        this.precioHabitacion = precioHabitacion;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
-    public void cambiarPrecio(){
-       
+    
+    public void cambiarPrecio(double precioNuevo){
+       precio = nuevoPrecio;
     }
 
 }
