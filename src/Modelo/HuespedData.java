@@ -48,7 +48,7 @@ public class HuespedData {
                                                         //1 columna con todas las claves y tantas filas como huesped tenga
                 
                 if(rs.next()){  //la primer fila corresponde al ultimo huesped que ingresamos
-                    huesped.setId(rs.getInt(1)); //recupero ID es autoincrementable
+                    huesped.setId_huesped(rs.getInt(1)); //recupero ID es autoincrementable
                     
                 }else{
                     System.out.println("No se pudo obtener el ID de huesped " );
@@ -73,7 +73,7 @@ public class HuespedData {
             Huesped huesped;  //para recorrer todo el huesped
             while(rs.next()){   //mientras ese rs tenga filas que reccorer
                 huesped=new Huesped();        //uso constructor vacio de huesped
-                huesped.setId(rs.getInt(1));
+                huesped.setId_huesped(rs.getInt(1));
                 huesped.setNombre(rs.getString(2));
                 huesped.setDomicilio(rs.getString(3));
                 huesped.setDni(rs.getInt(4));
@@ -104,11 +104,11 @@ public class HuespedData {
                                                 //deveria devolver una sola fila pero se recoore igual
         while(rs.next()){
             huesped= new Huesped();       //objeto de tipo huesped
-            huesped.setId(rs.getInt(1));
+            huesped.setId_huesped(rs.getInt(1));
             huesped.setNombre(rs.getString(2));
             huesped.setDomicilio(rs.getString(3));
             huesped.setDni(rs.getInt(4));
-             huesped.setCelular(rs.getInt(5));
+            huesped.setCelular(rs.getInt(5));
             huesped.setCorreo(rs.getString(6));
           
             
@@ -133,7 +133,7 @@ public class HuespedData {
             ps.setInt(3,huesped.getDni());
             ps.setInt(4, huesped.getCelular());
             ps.setString(5, huesped.getCorreo());
-            ps.setInt(6, huesped.getId());
+            ps.setInt(6, huesped.getId_huesped());
            
             
             ps.executeUpdate(); //siempre que haga un INSERT DELET O UPDATE
@@ -152,7 +152,7 @@ public class HuespedData {
             String sql="DELETE FROM huesped WHERE id=?";
             PreparedStatement ps= con.prepareStatement(sql);
             
-            ps.setInt(1, id);
+            ps.setInt(1, id_huesped);
             ps.executeUpdate();
             ps.close();
             
