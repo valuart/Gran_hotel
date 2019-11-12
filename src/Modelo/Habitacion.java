@@ -51,7 +51,7 @@ public class Habitacion {
         return numero;
     }
 
-    public void setPiso(int numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -59,6 +59,10 @@ public class Habitacion {
         this.estado = estado;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+    
       public void cambiarEstado(){
       estado = (estado.equals("libre"))?"ocupada":"libre";
       }

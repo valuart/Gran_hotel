@@ -28,32 +28,31 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(Huesped huesped, Habitacion habitacion, double importe, int cant_Pers, LocalDate fechaIngreso, LocalDate fechaEgreso) {
+    public Reserva(Huesped huesped, Habitacion habitacion, double importe, int cant_Pers, LocalDate FechaIngreso, LocalDate FechaEgreso) {
         this.huesped = huesped;
         this.habitacion = habitacion;
         this.importe = importe;
-        this.cant_Pers = cant_Pers; 
-        this.fechaIngreso = fechaIngreso;
-        this.fechaEgreso = fechaEgreso;
+        this.cant_Pers = cant_Pers;
+        this.FechaIngreso = FechaIngreso;
+        this.FechaEgreso = FechaEgreso;
     }
 
-    public Reserva(int id_Reserva, Huesped huesped, Habitacion habitacion, double importe, int cant_Pers, LocalDate fechaIngreso, LocalDate fechaEgreso) {
-        this.id_Reserva= id_Reserva;
+    public Reserva(int id_reserva, Huesped huesped, Habitacion habitacion, double importe, int cant_Pers, LocalDate FechaIngreso, LocalDate FechaEgreso) {
+        this.id_reserva = id_reserva;
         this.huesped = huesped;
         this.habitacion = habitacion;
         this.importe = importe;
-        this.cant_Pers = cant_Pers; 
-        this.fechaIngreso = fechaIngreso;
-        this.fechaEgreso = fechaEgreso;
-        
+        this.cant_Pers = cant_Pers;
+        this.FechaIngreso = FechaIngreso;
+        this.FechaEgreso = FechaEgreso;
     }
 
-    public int getId_Reserva() {
-        return id_Reserva;
+    public int getId_reserva() {
+        return id_reserva;
     }
 
-    public void setId_Reserva(int id_Reserva) {
-        this.id_Reserva = id_Reserva;
+    public void setId_reserva(int id_reserva) {
+        this.id_reserva = id_reserva;
     }
 
     public Huesped getHuesped() {
@@ -71,7 +70,7 @@ public class Reserva {
     public void setHabitacion(Habitacion habitacion) {
         this.habitacion = habitacion;
     }
-    
+
     public double getImporte() {
         return importe;
     }
@@ -89,19 +88,20 @@ public class Reserva {
     }
 
     public LocalDate getFechaIngreso() {
-        return fechaIngreso;
+        return FechaIngreso;
     }
 
-    public void setFechaIngreso(LocalDate fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
+    public void setFechaIngreso(LocalDate FechaIngreso) {
+        this.FechaIngreso = FechaIngreso;
     }
 
     public LocalDate getFechaEgreso() {
-        return fechaEgreso;
+        return FechaEgreso;
     }
 
-    public void setFechaEgreso(LocalDate fechaEgreso) {
-        this.fechaEgreso = fechaEgreso;
+    public void setFechaEgreso(LocalDate FechaEgreso) {
+        this.FechaEgreso = FechaEgreso;
     }
+
     
 }

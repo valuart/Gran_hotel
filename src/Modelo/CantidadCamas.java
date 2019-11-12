@@ -10,17 +10,22 @@ package Modelo;
  *
  * @author Vanesa
  */
-public class Cantidad_Camas {
+public class CantidadCamas {
     private int id_CantCam;
     private TipoCama TipoCama;
     private int cantidad;
 
-    public Cantidad_Camas() {
+    public CantidadCamas() {
     }
 
-    public Cantidad-Camas(int id_CantCam, TipoCama tipoCama, int cantidad) {
+    public CantidadCamas(TipoCama TipoCama, int cantidad) {
+        this.TipoCama = TipoCama;
+        this.cantidad = cantidad;
+    }
+
+    public CantidadCamas(int id_CantCam, TipoCama TipoCama, int cantidad) {
         this.id_CantCam = id_CantCam;
-        this.tipoCama = tipoCama;
+        this.TipoCama = TipoCama;
         this.cantidad = cantidad;
     }
 
@@ -33,11 +38,11 @@ public class Cantidad_Camas {
     }
 
     public TipoCama getTipoCama() {
-        return tipoCama;
+        return TipoCama;
     }
 
-    public void setTipoCama(TipoCama tipoCama) {
-        this.tipoCama = tipoCama;
+    public void setTipoCama(TipoCama TipoCama) {
+        this.TipoCama = TipoCama;
     }
 
     public int getCantidad() {
@@ -47,5 +52,5 @@ public class Cantidad_Camas {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-      
+
 }

@@ -76,7 +76,7 @@ public class TipoHabitacion {
     }
     
     public void cambiarPrecio(double precioNuevo){
-       precio = nuevoPrecio;
+       precio = precioNuevo;
     }
 
 }

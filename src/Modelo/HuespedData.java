@@ -26,35 +26,32 @@ public class HuespedData {
     
     public HuespedData(Conexion conexion){
         
-        con= conexion.getConexion();       //constructor que recive un tipo conexion de la clase Conexion
-                                            //para conectarse a la BD y editarla
+        con= conexion.getConexion();      
         
     }
     
-    public void guardarHuesped(Huesped huesped){   //recive un huesped y lo edita para subirlo a la BD 
-        String sql="INSERT INTO huesped(Nombre, Domicilio, Dni, Celular, Correo) VALUES (?,?,?,?,?)";//no se pone el id porque es autoincrementable, se pasa los valores de forma dinamica(VALUES)
+    public void guardarHuesped(Huesped huesped){   
+        String sql="INSERT INTO huesped(Nombre, Domicilio, Dni, Celular, Correo) VALUES (?,?,?,?,?)";
         
-            try (PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {//sql String que creamos arriba y una vez ingresamos este string le
+            try (PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1,huesped.getNombre());
                 ps.setString(2,huesped.getDomicilio());
-                ps.setInt(3,huesped.getDni());                                                       // pido que devuelva la lista de clave de huesped(con Statement)
+                ps.setInt(3,huesped.getDni());                                                       
                 ps.setInt(4,huesped.getCelular());
                 ps.setString(5,huesped.getCorreo()); 
                 
-                                                         //se saca la informacion de huesped mediante los metodos get
-                                                        //para subirlos a la BD
-                ps.executeUpdate();     //a travez de la coneccion con hace un INSERT a la BD
-                ResultSet rs= ps.getGeneratedKeys();    //resulset(matriz) le devuelve una tabla con la lista de claves
-                                                        //1 columna con todas las claves y tantas filas como huesped tenga
+                                                         
+                ps.executeUpdate();     
+                ResultSet rs= ps.getGeneratedKeys();    
                 
-                if(rs.next()){  //la primer fila corresponde al ultimo huesped que ingresamos
-                    huesped.setId_huesped(rs.getInt(1)); //recupero ID es autoincrementable
+                if(rs.next()){  
+                    huesped.getId_huesped(); 
                     
                 }else{
-                    System.out.println("No se pudo obtener el ID de huesped " );
+                    System.out.println("No se pudo obtener el ID del huesped " );
                 }
                 
-                ps.close();//cerrar el ps
+                ps.close();
             
         }catch(SQLException ex){
                 System.out.println("Error al ingresar el huesped");
@@ -63,17 +60,16 @@ public class HuespedData {
     }
     
     public List<Huesped> obtenerHuesped(){
-        List<Huesped> huespedes = new ArrayList<Huesped>();  //afuera del try catch para que se pueda retornar al final
+        List<Huesped> huespedes = new ArrayList<Huesped>();  
         try {          
             String sql=("SELECT * FROM huesped") ;
             PreparedStatement ps= con.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();         //devuelve lista (fila de huesped que pedi(nombre,dni,domicilio,correo,celular))
-            //tantas filas como huesped tiene la BD
+            ResultSet rs=ps.executeQuery();         
             
-            Huesped huesped;  //para recorrer todo el huesped
-            while(rs.next()){   //mientras ese rs tenga filas que reccorer
-                huesped=new Huesped();        //uso constructor vacio de huesped
-                huesped.setId_huesped(rs.getInt(1));
+            Huesped huesped;  
+            while(rs.next()){   
+                huesped=new Huesped();        
+                huesped.getId_huesped();
                 huesped.setNombre(rs.getString(2));
                 huesped.setDomicilio(rs.getString(3));
                 huesped.setDni(rs.getInt(4));
@@ -81,10 +77,10 @@ public class HuespedData {
                 huesped.setCorreo(rs.getString(6));
                 
                 
-                //va a ir leyendo todo el resultset(matriz) y se la da a la lista huesped
-                huespedes.add(huesped);        //huesped es de tipo lista
+                
+                huespedes.add(huesped);       
             }
-            ps.close();//cierro la conexion
+            ps.close();
             
             
         } catch (SQLException ex) {
@@ -94,17 +90,17 @@ public class HuespedData {
     }
     
     
-    public Huesped buscarHuesped(int id_Huesped){   //devuelve un objeto de tipo (huesped)    
-        Huesped huesped = null;                   //variable de tipo huesped
+    public Huesped buscarHuesped(int id_Huesped){     
+        Huesped huesped = null;                   
         try {
-        String sql=("SELECT * FROM huesped WHERE id=?");
+        String sql=("SELECT * FROM huesped WHERE id_huesped=?");
         PreparedStatement ps = con.prepareStatement(sql) ;
-        ps.setInt(1, id_Huesped);                //seteo el id de huesped con el parametro que pase (id_huesped)
-        ResultSet rs= ps.executeQuery();        //el executeQuery devuelve un RESULTSET
-                                                //deveria devolver una sola fila pero se recoore igual
+        ps.setInt(1, id_Huesped);                
+        ResultSet rs= ps.executeQuery();       
+                                               
         while(rs.next()){
-            huesped= new Huesped();       //objeto de tipo huesped
-            huesped.setId_huesped(rs.getInt(1));
+            huesped= new Huesped();       
+            huesped.getId_huesped();
             huesped.setNombre(rs.getString(2));
             huesped.setDomicilio(rs.getString(3));
             huesped.setDni(rs.getInt(4));
@@ -117,7 +113,7 @@ public class HuespedData {
         } catch (SQLException ex) {
             System.out.println("Error al buscar huesped");
         }
-        return huesped;      //este es el objeto que devuelve de tipo huesped
+        return huesped;      
         
     }
     
@@ -125,7 +121,7 @@ public class HuespedData {
     public void actualizarHuesped(Huesped huesped){
         try {
             
-            String sql=("UPDATE huesped SET nombre=?, dni=?, domicilio=?, correo=? , celular=?, WHERE id=?");
+            String sql=("UPDATE huesped SET nombre=?, dni=?, domicilio=?, correo=? , celular=?, WHERE id_huesped=?");
             PreparedStatement ps= con.prepareStatement(sql);
             
             ps.setString(1, huesped.getNombre());
@@ -136,8 +132,8 @@ public class HuespedData {
             ps.setInt(6, huesped.getId_huesped());
            
             
-            ps.executeUpdate(); //siempre que haga un INSERT DELET O UPDATE
-                                // si lo que ejecuto es una consulta SELECT es executeQuery()
+            ps.executeUpdate(); 
+                                
             ps.close();
         } catch (SQLException ex) {
             
@@ -147,9 +143,9 @@ public class HuespedData {
     }
     
     
-    public void borrarHuesped(int id){
+    public void borrarHuesped(int id_huesped){
         try {
-            String sql="DELETE FROM huesped WHERE id=?";
+            String sql="DELETE FROM huesped WHERE id_huesped=?";
             PreparedStatement ps= con.prepareStatement(sql);
             
             ps.setInt(1, id_huesped);
@@ -157,7 +153,7 @@ public class HuespedData {
             ps.close();
             
         } catch (SQLException ex) {
-            System.out.println("error al BORAR un huesped");
+            System.out.println("error al BORRAR un huesped");
         }
     }
 }

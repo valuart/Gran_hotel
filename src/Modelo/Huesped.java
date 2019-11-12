@@ -10,41 +10,41 @@ package Modelo;
  * @author Vanesa
  */
 public class Huesped { 
-   private int id;
+   private int id_huesped;
    private String nombre;
-   private int dni;
    private String domicilio;
-   private String correo;
+   private int dni;
    private int celular;
+   private String correo;
+  
 
     public Huesped() {
     }
 
-    public Huesped(String nombre, int dni, String domicilio, String correo, int celular) {
+    public Huesped(String nombre, String domicilio, int dni, int celular, String correo) {
         this.nombre = nombre;
-        this.dni = dni;
         this.domicilio = domicilio;
-        this.correo = correo;
+        this.dni = dni;
         this.celular = celular;
+        this.correo = correo;
     }
 
-    public Huesped(int id, String nombre, int dni, String domicilio, String correo, int celular) {
-        this.id = id;
+    public Huesped(int id_huesped, String nombre, String domicilio, int dni, int celular, String correo) {
+        this.id_huesped = id_huesped;
         this.nombre = nombre;
-        this.dni = dni;
         this.domicilio = domicilio;
-        this.correo = correo;
+        this.dni = dni;
         this.celular = celular;
+        this.correo = correo;
     }
 
-    public int getId() {
-        return id;
+    public int getId_huesped() {
+        return id_huesped;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id_huesped = id_huesped;
     }
-    
 
     public String getNombre() {
         return nombre;
@@ -52,14 +52,6 @@ public class Huesped {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
     }
 
     public String getDomicilio() {
@@ -70,12 +62,12 @@ public class Huesped {
         this.domicilio = domicilio;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getDni() {
+        return dni;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public int getCelular() {
@@ -85,7 +77,15 @@ public class Huesped {
     public void setCelular(int celular) {
         this.celular = celular;
     }
-    
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
    
    
 }
