@@ -32,14 +32,15 @@ public class HuespedData {
     }
     
     public void guardarHuesped(Huesped huesped){   //recive un huesped y lo edita para subirlo a la BD 
-        String sql="INSERT INTO huesped(Nombre, Dni, Domicilio, Correo, Celular) VALUES (?,?,?,?,?)";//no se pone el id porque es autoincrementable, se pasa los valores de forma dinamica(VALUES)
+        String sql="INSERT INTO huesped(Nombre, Domicilio, Dni, Celular, Correo) VALUES (?,?,?,?,?)";//no se pone el id porque es autoincrementable, se pasa los valores de forma dinamica(VALUES)
         
             try (PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {//sql String que creamos arriba y una vez ingresamos este string le
                 ps.setString(1,huesped.getNombre());
-                ps.setInt(2,huesped.getDni());                                                       // pido que devuelva la lista de clave de huesped(con Statement)
-                ps.setString(3,huesped.getDomicilio());
-                ps.setString(4,huesped.getCorreo()); 
-                ps.setInt(5,huesped.getCelular());
+                ps.setString(2,huesped.getDomicilio());
+                ps.setInt(3,huesped.getDni());                                                       // pido que devuelva la lista de clave de huesped(con Statement)
+                ps.setInt(4,huesped.getCelular());
+                ps.setString(5,huesped.getCorreo()); 
+                
                                                          //se saca la informacion de huesped mediante los metodos get
                                                         //para subirlos a la BD
                 ps.executeUpdate();     //a travez de la coneccion con hace un INSERT a la BD
@@ -74,10 +75,11 @@ public class HuespedData {
                 huesped=new Huesped();        //uso constructor vacio de huesped
                 huesped.setId(rs.getInt(1));
                 huesped.setNombre(rs.getString(2));
-                huesped.setDni(rs.getInt(3));
-                huesped.setDomicilio(rs.getString(4));
-                huesped.setCorreo(rs.getString(5));
-                huesped.setCelular(rs.getInt(6));
+                huesped.setDomicilio(rs.getString(3));
+                huesped.setDni(rs.getInt(4));
+                huesped.setCelular(rs.getInt(5));
+                huesped.setCorreo(rs.getString(6));
+                
                 
                 //va a ir leyendo todo el resultset(matriz) y se la da a la lista huesped
                 huespedes.add(huesped);        //huesped es de tipo lista
@@ -104,10 +106,11 @@ public class HuespedData {
             huesped= new Huesped();       //objeto de tipo huesped
             huesped.setId(rs.getInt(1));
             huesped.setNombre(rs.getString(2));
-            huesped.setDni(rs.getInt(3));
-            huesped.setDomicilio(rs.getString(4));
-            huesped.setCorreo(rs.getString(5));
-            huesped.setCelular(rs.getInt(6));//como es uno solo cuando salga del while huesped ya va a valer algo  
+            huesped.setDomicilio(rs.getString(3));
+            huesped.setDni(rs.getInt(4));
+             huesped.setCelular(rs.getInt(5));
+            huesped.setCorreo(rs.getString(6));
+          
             
         }
         ps.close();
@@ -126,10 +129,10 @@ public class HuespedData {
             PreparedStatement ps= con.prepareStatement(sql);
             
             ps.setString(1, huesped.getNombre());
-            ps.setInt(2,huesped.getDni());
-            ps.setString(3, huesped.getDomicilio());
-            ps.setString(4, huesped.getCorreo());
-            ps.setInt(5, huesped.getCelular());
+            ps.setString(2, huesped.getDomicilio());
+            ps.setInt(3,huesped.getDni());
+            ps.setInt(4, huesped.getCelular());
+            ps.setString(5, huesped.getCorreo());
             ps.setInt(6, huesped.getId());
            
             
