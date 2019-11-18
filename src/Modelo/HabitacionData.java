@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 import java.sql.Connection;
@@ -12,18 +8,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Usuario
- */
 public class HabitacionData {                   
    
     Connection con= null;       
     
     public HabitacionData(Conexion conexion){
         
-        con= conexion.getConexion();                                                     
+        try {                                                     
+            con= conexion.getConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(HabitacionData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void guardarHabitacion(Habitacion habitacion){   
@@ -32,7 +30,7 @@ public class HabitacionData {
             try (PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
                 ps.setInt(1,habitacion.getPiso());
                 ps.setInt(2,habitacion.getNumero());
-                ps.setString(3,habitacion.getEstado());                                                       // pido que devuelva la lista de clave de huesped(con Statement)
+                ps.setBoolean(3,habitacion.getEstado());// pido que devuelva la lista de clave de huesped(con Statement)
                                                              
                 ps.executeUpdate();     
                 ResultSet rs= ps.getGeneratedKeys();    
@@ -65,7 +63,7 @@ public class HabitacionData {
                 habitacion.getId_habitacion();
                 habitacion.setPiso(rs.getInt(2));
                 habitacion.setNumero(rs.getInt(3));
-                habitacion.setEstado(rs.getString(4));
+                habitacion.setEstado(rs.getBoolean(4));
                         
                 habitaciones.add(habitacion);       
             }
@@ -92,7 +90,7 @@ public class HabitacionData {
             habitacion.getId_habitacion();
             habitacion.setPiso(rs.getInt(2));
             habitacion.setNumero(rs.getInt(3));
-            habitacion.setEstado(rs.getString(4));
+            habitacion.setEstado(rs.getBoolean(4));
             
         }
         ps.close();
@@ -112,7 +110,7 @@ public class HabitacionData {
             
             ps.setInt(1, habitacion.getPiso());
             ps.setInt(2, habitacion.getNumero());
-            ps.setString(3,habitacion.getEstado());
+            ps.setBoolean(3,habitacion.getEstado());
             ps.setInt(6, habitacion.getId_habitacion());
             
             ps.executeUpdate(); 

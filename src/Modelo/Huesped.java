@@ -1,14 +1,5 @@
 package Modelo;
 
-
-/*
- *  Huésped tiene sus datos personales (nombre, DNI, Domicilio, correo, celular). 
- */
-
-/**
- *
- * @author Vanesa
- */
 public class Huesped { 
    private int id_huesped;
    private String nombre;
@@ -42,8 +33,8 @@ public class Huesped {
         return id_huesped;
     }
 
-    public void setId(int id) {
-        this.id_huesped = id_huesped;
+    public void setId_huesped(int id) {
+        this.id_huesped = id;
     }
 
     public String getNombre() {

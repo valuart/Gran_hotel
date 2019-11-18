@@ -12,18 +12,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Usuario
- */
 public class CantidadCamasData {
     Connection con= null;       
     Conexion conexion;
     
     public CantidadCamasData(Conexion conexion){
-        con= conexion.getConexion();      
-        this.conexion=conexion;
+        try {
+            con= conexion.getConexion();
+            this.conexion=conexion;
+        } catch (SQLException ex) {
+            Logger.getLogger(CantidadCamasData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void guardarCantidadCamas(CantidadCamas cantidadCamas){   

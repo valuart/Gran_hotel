@@ -1,15 +1,5 @@
 package Modelo;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * TIPO CAMA=Simples, Queen, King Size)
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Vanesa
- */
 public class TipoCama {
     private int id_TipoCama;
     private TipoHabitacion tipoHabitacion;
@@ -18,6 +8,10 @@ public class TipoCama {
      public TipoCama() {
     }
 
+    public TipoCama(TipoHabitacion tipoHabitacion, String tipo) {
+        this.tipoHabitacion = tipoHabitacion;
+        this.tipo = tipo;
+    }
 
     public TipoCama(int id_TipoCama, TipoHabitacion tipoHabitacion, String tipo) {
         this.id_TipoCama = id_TipoCama;

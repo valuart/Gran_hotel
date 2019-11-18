@@ -13,18 +13,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Usuario
- */
+
 public class TipoHabitacionData {
     Connection con= null;       
     Conexion conexion;
     
     public TipoHabitacionData(Conexion conexion){
-        con= conexion.getConexion();      
-        this.conexion=conexion;
+        try {
+            con= conexion.getConexion();
+            this.conexion=conexion;
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoHabitacionData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void guardarTipoHabitacion(TipoHabitacion tipoHabitacion){   

@@ -1,30 +1,22 @@
 package Modelo;
 
-/*Habitaciones numeradas del 1 al 200. Se encuentran en un piso, 
-y tienen un estado Ocupada (1) o Libre (0).
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Vanesa
- */
 public class Habitacion {
    private int id_habitacion;
    private int piso;
    private int numero;
-   private String estado;
+   private boolean estado;
    
     public Habitacion() {
     }
 
-    public Habitacion(int piso, int numero, String estado) {
+    public Habitacion(int piso, int numero, boolean estado) {
         this.piso = piso;
         this.numero = numero;
         this.estado = estado;
     }
 
-    public Habitacion(int id_habitacion, int piso, int numero, String estado) {
+    public Habitacion(int id_habitacion, int piso, int numero, boolean estado) {
         this.id_habitacion = id_habitacion;
         this.piso = piso;
         this.numero = numero;
@@ -55,15 +47,17 @@ public class Habitacion {
         this.numero = numero;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
     
       public void cambiarEstado(){
-      estado = (estado.equals("libre"))?"ocupada":"libre";
+        if(estado)
+            estado = false;
+        else estado = true;
       }
 }

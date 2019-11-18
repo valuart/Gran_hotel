@@ -10,23 +10,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Usuario
- */
 public class HuespedData {
     Connection con= null;       
     
     public HuespedData(Conexion conexion){
         
-        con= conexion.getConexion();      
+        try {      
+            con= conexion.getConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(HuespedData.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -57,38 +54,7 @@ public class HuespedData {
                 System.out.println("Error al ingresar el huesped");
         }
         
-    }
-    
-    public List<Huesped> obtenerHuesped(){
-        List<Huesped> huespedes = new ArrayList<Huesped>();  
-        try {          
-            String sql=("SELECT * FROM huesped") ;
-            PreparedStatement ps= con.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();         
-            
-            Huesped huesped;  
-            while(rs.next()){   
-                huesped=new Huesped();        
-                huesped.getId_huesped();
-                huesped.setNombre(rs.getString(2));
-                huesped.setDomicilio(rs.getString(3));
-                huesped.setDni(rs.getInt(4));
-                huesped.setCelular(rs.getInt(5));
-                huesped.setCorreo(rs.getString(6));
-                
-                
-                
-                huespedes.add(huesped);       
-            }
-            ps.close();
-            
-            
-        } catch (SQLException ex) {
-            System.out.println("Error al listar huesped" );
-        }
-        return huespedes;
-    }
-    
+    }   
     
     public Huesped buscarHuesped(int id_Huesped){     
         Huesped huesped = null;                   
@@ -155,6 +121,32 @@ public class HuespedData {
         } catch (SQLException ex) {
             System.out.println("error al BORRAR un huesped");
         }
+    }
+    
+    public Huesped BuscarHuespedXDni(int dni){
+        Huesped huesped = null;                   
+        try {
+        String sql=("SELECT * FROM huesped WHERE Dni = ?");
+        PreparedStatement ps = con.prepareStatement(sql) ;
+        //ps.setInt(1, id_Huesped);                
+        ResultSet rs= ps.executeQuery();       
+                                               
+        while(rs.next()){
+            huesped= new Huesped();       
+            huesped.getId_huesped();
+            huesped.setNombre(rs.getString(2));
+            huesped.setDomicilio(rs.getString(3));
+            huesped.setDni(rs.getInt(4));
+            huesped.setCelular(rs.getInt(5));
+            huesped.setCorreo(rs.getString(6));
+          
+            
+        }
+        ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar huesped");
+        }
+        return huesped; 
     }
 }
 

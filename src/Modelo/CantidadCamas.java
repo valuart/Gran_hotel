@@ -1,15 +1,4 @@
 package Modelo;
-
-/*
- * (Estándar simple, doble, Triple, o Suite Lujo) 
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Vanesa
- */
 public class CantidadCamas {
     private int id_CantCam;
     private TipoCama TipoCama;

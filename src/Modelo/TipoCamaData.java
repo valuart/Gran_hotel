@@ -12,18 +12,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Usuario
- */
+
 public class TipoCamaData {
     Connection con= null; 
     Conexion conexion;
     
     public TipoCamaData(Conexion conexion){
-        con= conexion.getConexion();      
-        this.conexion=conexion;
+        try {
+            con= conexion.getConexion();
+            this.conexion=conexion;
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoCamaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void guardarTipoCama(TipoCama tipoCama){   

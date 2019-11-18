@@ -5,17 +5,6 @@ import Modelo.Huesped;
 import Modelo.Habitacion;
 import java.time.LocalDate;
 
-/*
- * Asi una reserva vincula un huésped con una habitación, 
-y tiene fechas inicio y fin, días, un monto a pagar, un estado.  
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Vanesa
- */
 public class Reserva {
     private int id_reserva;
     private Huesped huesped;
